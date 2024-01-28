@@ -1,0 +1,26 @@
+{%  extends "myapp/base.html" %} 
+{% block body %}
+    <div class="flex justify-between">
+        <div class="ml-20 mt-10 font-bold text-xl">My Products</div>
+        <div class="ml-20 mt-10">
+            <a class="bg-green-500 text-white px-2 py-4 mr-8" href="{% url 'createproduct' %}">New Product</a>
+        </div>
+    </div>
+
+    
+        <div class="products-countainer shadow-lg p-10 m-5">
+            {% for order in orders %}
+            <div class="flex shadow-lg m-5 p-2 justify-between">
+                <div>
+                    <div>{{order.product.name}}</div>
+                    <div>{{order.amount}}</div>
+                    <div>{{order.created_on}}</div>
+                    <div class="mt-10"><a class="bg-green-500 text-white px-4 py-2" href="{{order.product.file.url}}">Click to download</a></div>
+                </div>
+        </div>
+            
+            
+            
+        {% endfor %}
+    </div>
+{% endblock %}
